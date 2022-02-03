@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   Color _mainColor = Colors.white;
   Color _secondaryColor = Colors.black;
 
-  String? _userName;
+  String _userName = '';
   final _nameController = TextEditingController();
 
   @override
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               color: _mainColor,
               child: Center(
                 child: Text(
-                  _userName != null && _userName != ''
+                  _userName != ''
                   ? 'Nice to meet you $_userName!'
                   : 'Hey there', 
                   textAlign: TextAlign.center,
@@ -88,7 +88,11 @@ class _HomePageState extends State<HomePage> {
           hintStyle: TextStyle(color: _secondaryColor.withOpacity(0.5)),
           filled: true,
           fillColor: _secondaryColor.withOpacity(0.2),
-          prefixIcon: Icon(Icons.person_add_alt_sharp, color: _mainColor, size: 30,),
+          prefixIcon: Icon(
+            Icons.person_add_alt_sharp, 
+            color: _mainColor, 
+            size: 30,
+          ),
           border: OutlineInputBorder(
             borderSide: BorderSide(color: _mainColor),
             borderRadius: BorderRadius.circular(8)
@@ -109,7 +113,10 @@ class _HomePageState extends State<HomePage> {
   void changeColor() {
     setState(() {
       _mainColor = ColorGenerator.getColor();
-      if(_mainColor.red >= 200 || _mainColor.blue >= 200 || _mainColor.green >= 200) {
+      if(_mainColor.red >= 200 || 
+        _mainColor.blue >= 200 || 
+        _mainColor.green >= 200
+      ) {
         _secondaryColor = Colors.black;
       } else {
         _secondaryColor = Colors.white;
